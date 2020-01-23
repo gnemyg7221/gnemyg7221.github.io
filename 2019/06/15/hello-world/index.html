@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="ConstraintLayout 一. 布局1. 居中居中于⽗父容器 1234app:layout_constraintStart_toStartOf=&amp;quot;parent&amp;quot;app:layout_constraintEnd_toEndOf=&amp;quot;parent&amp;quot;app:layout_constraintTop_toTopOf=&amp;quot;parent&amp;quot;app:">
+<meta name="keywords" content="ConstraintLayout Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ConstraintLayout">
+<meta property="og:url" content="http://yoursite.com/2019/06/15/hello-world/index.html">
+<meta property="og:site_name" content="AemonGuo的大脑皮层、小脑、海马体、杏仁核.....">
+<meta property="og:description" content="ConstraintLayout 一. 布局1. 居中居中于⽗父容器 1234app:layout_constraintStart_toStartOf=&amp;quot;parent&amp;quot;app:layout_constraintEnd_toEndOf=&amp;quot;parent&amp;quot;app:layout_constraintTop_toTopOf=&amp;quot;parent&amp;quot;app:">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-15T14:59:53.662Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ConstraintLayout">
+<meta name="twitter:description" content="ConstraintLayout 一. 布局1. 居中居中于⽗父容器 1234app:layout_constraintStart_toStartOf=&amp;quot;parent&amp;quot;app:layout_constraintEnd_toEndOf=&amp;quot;parent&amp;quot;app:layout_constraintTop_toTopOf=&amp;quot;parent&amp;quot;app:">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/06/15/hello-world/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>ConstraintLayout | AemonGuo的大脑皮层、小脑、海马体、杏仁核.....</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AemonGuo的大脑皮层、小脑、海马体、杏仁核.....</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">慢慢来，比较快～</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/15/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AemonGuo">
+      <meta itemprop="description" content="没啥">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AemonGuo的大脑皮层、小脑、海马体、杏仁核.....">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">ConstraintLayout
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-15 12:31:36 / Modified: 22:59:53" itemprop="dateCreated datePublished" datetime="2019-06-15T12:31:36+08:00">2019-06-15</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>ConstraintLayout</p>
+<h1 id="一-布局"><a href="#一-布局" class="headerlink" title="一. 布局"></a>一. 布局</h1><h2 id="1-居中"><a href="#1-居中" class="headerlink" title="1. 居中"></a>1. 居中</h2><p><strong>居中于⽗父容器</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">app:layout_constraintStart_toStartOf=&quot;parent&quot;</span><br><span class="line">app:layout_constraintEnd_toEndOf=&quot;parent&quot;</span><br><span class="line">app:layout_constraintTop_toTopOf=&quot;parent&quot;</span><br><span class="line">app:layout_constraintBottom_toBottomOf=&quot;parent&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>居中于控件中⼼心</strong></p>
+<ul>
+<li><p>⽔平⽅向居中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">app:layout_constraintStart_toStartOf=&quot;@id/view&quot;</span><br><span class="line">app:layout_constraintEnd_toEndOf=&quot;@id/view&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>垂直⽅向居中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">app:layout_constraintTop_toTopOf=&quot;@id/view&quot;</span><br><span class="line">app:layout_constraintBottom_toBottomOf=&quot;@id/view&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>居中于控件的边<br>控件垂直居中于 view 的「下边」<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">app:layout_constraintTop_toBottomOf=&quot;@id/view&quot;</span><br><span class="line">app:layout_constraintBottom_toBottomOf=&quot;@id/view&quot;</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-填充"><a href="#2-填充" class="headerlink" title="2. 填充"></a>2. 填充</h2><p>⽔平⽅向填充⽗容器(通过 <code>match_constraint</code> )</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app:layout_constraintStart_toStartOf=&quot;parent&quot;</span><br><span class="line">app:layout_constraintEnd_toEndOf=&quot;parent&quot;</span><br><span class="line">android:layout_width=&quot;0dp&quot;</span><br></pre></td></tr></table></figure>
+<p> 备注:在早期版本中 match_parent 没有效果，必须使⽤ match_constraint 来完成。</p>
+<h3 id="3-权重"><a href="#3-权重" class="headerlink" title="3. 权重"></a>3. 权重</h3><p>为⽔平⽅向的控件设置权重，⼤小为 <code>2:1:1</code> 。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- (view-1) --&gt;</span><br><span class="line">android:layout_width=&quot;0dp&quot;</span><br><span class="line">app:layout_constraintHorizontal_weight=&quot;2&quot;</span><br><span class="line">&lt;!-- (view-2) --&gt;</span><br><span class="line">android:layout_width=&quot;0dp&quot;</span><br><span class="line">app:layout_constraintHorizontal_weight=&quot;1&quot;</span><br><span class="line">&lt;!-- (view-3) --&gt;</span><br><span class="line">android:layout_width=&quot;0dp&quot;</span><br><span class="line">app:layout_constraintHorizontal_weight=&quot;1&quot;</span><br></pre></td></tr></table></figure></p>
+<h2 id="4-文字基准线对⻬"><a href="#4-文字基准线对⻬" class="headerlink" title="4. 文字基准线对⻬"></a>4. 文字基准线对⻬</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app:layout_constraintBaseline_toBaselineOf</span><br></pre></td></tr></table></figure>
+<h2 id="5-圆形定位"><a href="#5-圆形定位" class="headerlink" title="5.圆形定位"></a>5.圆形定位</h2><p>通过「圆⼼」「⻆度」「半径」设置圆形定位<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app:layout_constraintCircle=&quot;@id/view&quot;</span><br><span class="line">app:layout_constraintCircleAngle=&quot;90&quot;</span><br><span class="line">app:layout_constraintCircleRadius=&quot;180dp&quot;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h1 id="二-特殊属性"><a href="#二-特殊属性" class="headerlink" title="二. 特殊属性"></a>二. 特殊属性</h1><h2 id="1-约束限制"><a href="#1-约束限制" class="headerlink" title="1. 约束限制"></a>1. 约束限制</h2><p>限制控件⼤大⼩小不不会超过约束范围。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">app:layout_constrainedWidth=&quot;true&quot;</span><br><span class="line">app:layout_constrainedHeight=&quot;true&quot;</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-偏向"><a href="#2-偏向" class="headerlink" title="2. 偏向"></a>2. 偏向</h2><p>控制控件在垂直⽅向的 30%的位置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app:layout_constraintTop_toTopOf=&quot;parent&quot;</span><br><span class="line">app:layout_constraintBottom_toBottomOf=&quot;parent&quot;</span><br><span class="line">app:layout_constraintVertical_bias=&quot;0.3&quot;</span><br></pre></td></tr></table></figure></p>
+<p>除了了配合百分⽐定位，还有⽤于配合有时在「约束限制」的条件下不不需要居中效果的情况.</p>
+<p>垂直⽅向居顶部</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">app:layout_constraintTop_toTopOf=&quot;parent&quot;</span><br><span class="line">app:layout_constraintBottom_toBottomOf=&quot;parent&quot;</span><br><span class="line">app:layout_constrainedHeight=&quot;true&quot;</span><br><span class="line">app:layout_constraintVertical_bias=&quot;0.0&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="3-约束链"><a href="#3-约束链" class="headerlink" title="3. 约束链"></a>3. 约束链</h2><p>在约束链上的第⼀个控件上加 chainStyle ，⽤来改变⼀组控件的布局⽅式</p>
+<ul>
+<li>packed(打包)</li>
+<li>spread (扩散) </li>
+<li>spread_inside(内部扩散)</li>
+</ul>
+<p>垂直⽅向 packed<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app:layout_constraintVertical_chainStyle=&quot;packed&quot;</span><br></pre></td></tr></table></figure></p>
+<h2 id="4-链宽⾼比"><a href="#4-链宽⾼比" class="headerlink" title="4. 链宽⾼比"></a>4. 链宽⾼比</h2><ul>
+<li>至少需要⼀个⽅向的值为 <code>match_constraint</code></li>
+<li>默认的都是宽高⽐，然后根据另外⼀条边和⽐例例算出 <code>match_constraint</code> 的值</li>
+</ul>
+<p>x:y 默认表示的都是 <code>width:height</code></p>
+<p>有值的边，ratio 值(默认是宽高⽐)，被约束的边(也有可能是有值的边)。 </p>
+<ul>
+<li><p>宽是 0dp，高是 100dp，ratio 是 2:1<br>默认情况下是宽是 200dp，但是我们可以指定被约束的边是 height，那么宽度就是50 dp </p>
+</li>
+<li><p>高是 0dp，宽是 100 dp，ratio 是 2:1<br>默认情况下是高是 50 dp，但是我们指定被约束的边是 width，那么高度为200dp</p>
+</li>
+</ul>
+<p>只有⼀个方向<code>match_constraint</code>不要去⽤，如果是两个方向都是<code>match_constraint</code> 那么可能会⽤到。</p>
+<h2 id="5-百分⽐布局"><a href="#5-百分⽐布局" class="headerlink" title="5. 百分⽐布局"></a>5. 百分⽐布局</h2><ul>
+<li>需要对应⽅向上的值为<code>match_constraint</code></li>
+<li>百分比是parent父容器 的百分比，⽽不是约束区域的百分⽐</li>
+</ul>
+<p>宽度是⽗容器的 <code>30%</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">android:layout_width=&quot;0dp&quot;</span><br><span class="line">app:layout_constraintWidth_percent=&quot;0.3&quot;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h1 id="三-辅助控件"><a href="#三-辅助控件" class="headerlink" title="三. 辅助控件"></a>三. 辅助控件</h1><h2 id="1-GuideLine"><a href="#1-GuideLine" class="headerlink" title="1. GuideLine"></a>1. GuideLine</h2><ul>
+<li>设置辅助线的⽅向 <code>android:orientation=&quot;vertical&quot;</code></li>
+<li>设置辅助线的位置，根据⽅向不不同<ul>
+<li>距离左侧或上侧的距离 <code>layout_constraintGuide_begin</code></li>
+<li>距离右侧或下侧的距离 <code>layout_constraintGuide_end</code></li>
+<li>百分⽐ <code>layout_constraintGuide_percent</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="2-Group"><a href="#2-Group" class="headerlink" title="2. Group"></a>2. Group</h2><p>通过 <code>constraint_referenced_ids</code> 使⽤引⽤的⽅式来避免布局嵌套。 可以为一组控件统一设置 <code>setVisibility</code></p>
+<h2 id="3-Layer"><a href="#3-Layer" class="headerlink" title="3.Layer"></a>3.Layer</h2><p>和 Group 类似，同样通过引⽤的⽅式来避免布局嵌套，可以为一组控件统一设置旋转/缩放/位移。</p>
+<h2 id="4-Barrier"><a href="#4-Barrier" class="headerlink" title="4. Barrier"></a>4. Barrier</h2><p>通过设置一组控件的某个⽅向的屏障，来避免布局嵌套。</p>
+<h2 id="5-Placeholder"><a href="#5-Placeholder" class="headerlink" title="5.Placeholder"></a>5.Placeholder</h2><p>通过 <code>setContentId</code> 来将指定控件放到占位符的位置。 </p>
+<h2 id="6-Flow"><a href="#6-Flow" class="headerlink" title="6.Flow"></a>6.Flow</h2><p>通过引⽤的⽅式来避免布局嵌套。<br>wrapMode</p>
+<ul>
+<li>chain </li>
+<li>aligned </li>
+<li>none(默认)</li>
+</ul>
+<p>注意这个控件是可以被测量量的，所以对应方向上的值可能需要被确定(即不能只约束同一⽅向的单个约束)</p>
+<h2 id="7-ConstraintSet"><a href="#7-ConstraintSet" class="headerlink" title="7.ConstraintSet"></a>7.ConstraintSet</h2><p>使⽤ <code>ConstraintSet</code> 对象来动态修改布局。</p>
+<blockquote>
+<p>防⽌止布局中有⽆ id 控件，可以设置 <code>isForceId = false</code></p>
+</blockquote>
+<p>通过 <code>ConstraintSet#clone</code> 来从 xml 布局中获取约束集。</p>
+<h2 id="8-布局扁平化更加容易做过渡动画"><a href="#8-布局扁平化更加容易做过渡动画" class="headerlink" title="8.布局扁平化更加容易做过渡动画"></a>8.布局扁平化更加容易做过渡动画</h2><p>在布局修改之前 通过加上 <code>TransitionManager</code> 来⾃动完成过渡动画。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ConstraintLayout-Android/" rel="tag"># ConstraintLayout Android</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/24/test/" rel="next" title="test">
+                <i class="fa fa-chevron-left"></i> test
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="AemonGuo">
+            
+              <p class="site-author-name" itemprop="name">AemonGuo</p>
+              <div class="site-description motion-element" itemprop="description">没啥</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/gnemyg7221" title="GitHub &rarr; https://github.com/gnemyg7221" rel="noopener" target="_blank"><i class="fa fa-fw fa-fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://blog.csdn.net/itermeng" title="CSDN &rarr; https://blog.csdn.net/itermeng" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="/guoyimeng1227@gmail.com" title="E-Mail &rarr; guoyimeng1227@gmail.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一-布局"><span class="nav-number">1.</span> <span class="nav-text">一. 布局</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-居中"><span class="nav-number">1.1.</span> <span class="nav-text">1. 居中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-填充"><span class="nav-number">1.2.</span> <span class="nav-text">2. 填充</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-权重"><span class="nav-number">1.2.1.</span> <span class="nav-text">3. 权重</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-文字基准线对⻬"><span class="nav-number">1.3.</span> <span class="nav-text">4. 文字基准线对⻬</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-圆形定位"><span class="nav-number">1.4.</span> <span class="nav-text">5.圆形定位</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二-特殊属性"><span class="nav-number">2.</span> <span class="nav-text">二. 特殊属性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-约束限制"><span class="nav-number">2.1.</span> <span class="nav-text">1. 约束限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-偏向"><span class="nav-number">2.2.</span> <span class="nav-text">2. 偏向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-约束链"><span class="nav-number">2.3.</span> <span class="nav-text">3. 约束链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-链宽⾼比"><span class="nav-number">2.4.</span> <span class="nav-text">4. 链宽⾼比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-百分⽐布局"><span class="nav-number">2.5.</span> <span class="nav-text">5. 百分⽐布局</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三-辅助控件"><span class="nav-number">3.</span> <span class="nav-text">三. 辅助控件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-GuideLine"><span class="nav-number">3.1.</span> <span class="nav-text">1. GuideLine</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Group"><span class="nav-number">3.2.</span> <span class="nav-text">2. Group</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Layer"><span class="nav-number">3.3.</span> <span class="nav-text">3.Layer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Barrier"><span class="nav-number">3.4.</span> <span class="nav-text">4. Barrier</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Placeholder"><span class="nav-number">3.5.</span> <span class="nav-text">5.Placeholder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Flow"><span class="nav-number">3.6.</span> <span class="nav-text">6.Flow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-ConstraintSet"><span class="nav-number">3.7.</span> <span class="nav-text">7.ConstraintSet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-布局扁平化更加容易做过渡动画"><span class="nav-number">3.8.</span> <span class="nav-text">8.布局扁平化更加容易做过渡动画</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-fas fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AemonGuo</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.1</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="Total Visitors">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="Total Views">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.1"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
